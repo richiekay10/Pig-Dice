@@ -68,7 +68,7 @@ const rollDice = function () {
     let random = Math.trunc(Math.random() * 6) + 1;
     //console.log(random);
     diceImg.classList.remove("hidden");
-    diceImg.setAttribute(`src`, `dice-${random}.png`);
+    diceImg.setAttribute(`src`, `./images/dice-${random}.png`);
 
     if (random !== 1) {
       current += random;
