@@ -26,15 +26,14 @@
   <body class="forNow">
 
     <div class="text-center font-italic refresh-note font-weight-bolder">
-      <!-- <a class="codepen-button"><span>Start Coding</span></a> -->
-      <p class="mb-0 codepen-button"><span>You can click on "R" or the <em>New Game</em> button to refresh the game</span></p>
+      <p class="mb-0 pen-button"><span>You can click on "R" or the <em>New Game</em> button to refresh the game</span></p>
     </div>
     
     <div class="outer">
       <div class="inner">
-        <div class="side-0 curr--0">
-          <h2 class="text-center display-4 text-uppercase player-text">Player 1</h2>
-          <h1 class="display-2 text-center hold-numb-0">0</h1>
+        <div class="side-0 curr--0"> <!-- I used side-0 and side-1 to give the flex of 50% to both sides -->
+          <h2 class="text-center display-4 text-uppercase player-text player1-text">Player 1</h2> <!-- I used the player-text class in JS to show which player wins -->
+          <h1 class="display-2 text-center hold-numb-0">0</h1> <!-- I used hold-numb-0 and hold-numb-1 to get the hold number -->
           <div class="current-section">
             <h2 class="text-center">Current</h2>
             <p class="text-center current-score current-player-0">0</p>
@@ -42,7 +41,7 @@
         </div>
 
         <div class="side-1 curr--1">
-          <h2 class="text-center display-4 text-uppercase player-text">Player 2</h2>
+          <h2 class="text-center display-4 text-uppercase player-text player2-text">Player 2</h2>
           <h1 class="display-2 text-center hold-numb-1">0</h1>
           <div class="current-section">
             <h2 class="text-center">Current</h2>
@@ -124,6 +123,17 @@
         </svg>
       </span> 
   </button>
+  
+  <!-- Setting Players and Winning Value DIV-->
+  <div class="setting-players set-players pb-5">
+    <div>
+      <p>Please Set</p>
+      <input type="text" placeholder="Player 1 Name" minlength="3" maxlength="8" class="input1" required /><br /><br />
+      <input type="text" placeholder="Player 2 Name" minlength="3" maxlength="8" class="input2" required /><br /><br />
+      <input type="number" placeholder="Winning Value" class="winning-value" /><br /><br />
+      <button class="start-game">Start Game</button>
+    </div>
+  </div>
 
 
     <script src="pig-game.js"></script>

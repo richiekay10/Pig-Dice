@@ -14,11 +14,25 @@ const aboutBtn = document.querySelector(".about-button");
 const aboutGameInfo = document.querySelector(".about-game-info");
 const closeX = document.querySelector(".x-mark");
 const overlay = document.querySelector(".overlay");
+const setPlayersContainer = document.querySelector(".set-players"); //Setting players DIV
+const setPlayer1 = document.querySelector(".input1"); //Getting Player 1 input
+const setPlayer2 = document.querySelector(".input2"); //Getting Player 2 input
+const winningValue = document.querySelector(".winning-value"); //Winning Value input
+const startGame = document.querySelector(".start-game"); //Start game button
+const player1Text = document.querySelector(".player1-text"); //Player 1 text
+const player2Text = document.querySelector(".player2-text"); //Player 2 text
 
 //Implementing the Player Winner Text
 const playerText = document.querySelectorAll(".player-text");
 //console.log(playerText);
 
+
+// let text1 = "";
+// let text2 = "";
+
+let text = [];
+
+let value = 0; //This is the counter to increase for the winning value
 let current = 0;
 let holdScore = [0, 0];
 let activePlayer = 0;
@@ -60,6 +74,15 @@ const refresh = function () {
   //Resetting the Player 1 and Player 2 Winner text to the defaults
   playerText[0].innerHTML = `PLAYER 1`;
   playerText[1].innerHTML = `PLAYER 2`;
+
+  //Resetting the winning value
+  value = 0;
+  setPlayersContainer.classList.remove("hide-input"); //Removing the hide-input
+  
+  //Setting all input to empty value
+  setPlayer1.value = "";
+  setPlayer2.value = "";
+  winningValue.value = "";
 }
 
 
@@ -85,7 +108,8 @@ const holdButton = function () {
   if (playing) {
     holdScore[activePlayer] += current;
     document.querySelector(`.hold-numb-${activePlayer}`).innerHTML = holdScore[activePlayer];
-    if (holdScore[activePlayer] >= 60) {
+    if (holdScore[activePlayer] >= value) {
+      //console.log(value);
       playing = false;
       document.querySelector(`.curr--${activePlayer}`).classList.add("winner");
       document.querySelector(`.curr--${activePlayer}`).classList.remove("side");
@@ -94,11 +118,20 @@ const holdButton = function () {
       //   playerText[i].innerHTML = `PLAYER ${[activePlayer + 1]} WINS`;
       // }
 
+      //`PLAYER ${activePlayer + 1} WINS`
+      //`PLAYER ${activePlayer + 1} WINS`
       //The if statement works in all cases
+      // for (let i = activePlayer; i < holdScore.length - 1; i++) {
+      //   if (activePlayer) {
+      //     playerText[activePlayer].innerHTML = `${text[activePlayer + 1]} wins`;
+      //   } else {
+      //     playerText[activePlayer].innerHTML = `${text[activePlayer + 1]} wins`;
+      //   }
+      // }
       if (activePlayer) {
-        playerText[activePlayer].innerHTML = `PLAYER ${activePlayer + 1} WINS`;
+        playerText[activePlayer].innerHTML = `${text[activePlayer]} wins`;
       } else {
-        playerText[activePlayer].innerHTML = `PLAYER ${activePlayer + 1} WINS`;
+        playerText[activePlayer].innerHTML = `${text[activePlayer]} wins`;
       }
     }
     
@@ -130,12 +163,25 @@ const closeModal = function (event) {
 
 const refreshGame = function (e) {
   let key = e.key;
-  if (key === "R") {
+  if (key === "R" || key === "r") {
     refresh();
   }
   
 }
 
+const startGameNow = function () {
+  // const playerValue1 = setPlayer1.value;
+  // const playerValue2 = setPlayer2.value;
+  text.push(setPlayer1.value, setPlayer2.value);
+  //text2 += setPlayer2.value;
+  value += Number(winningValue.value);
+  player1Text.innerHTML = text[0];
+  player2Text.innerHTML = text[1];
+  setPlayersContainer.classList.add("hide-input");
+}
+
+
+startGame.addEventListener("click", startGameNow);
 overlay.addEventListener("click", closeXMark);
 document.addEventListener("keydown", refreshGame);
 document.addEventListener("keydown", closeModal);

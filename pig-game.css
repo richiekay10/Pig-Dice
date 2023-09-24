@@ -143,6 +143,13 @@ box-shadow:  -31px 31px 63px #30638E,
   display: none;
 }
 
+.setting-players {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 
 
 
@@ -241,7 +248,7 @@ box-shadow:  -31px 31px 63px #30638E,
 
 
 /* This is the NEW Button and R info */
-.codepen-button {
+.pen-button {
   display: block;
   cursor: pointer;
   color: white;
@@ -255,7 +262,7 @@ box-shadow:  -31px 31px 63px #30638E,
   isolation: isolate;
 }
 
-.codepen-button::before {
+.pen-button::before {
   content: "";
   position: absolute;
   top: 0;
@@ -270,7 +277,7 @@ box-shadow:  -31px 31px 63px #30638E,
   transition: translate 0.25s ease-out;
 }
 
-.codepen-button:hover::before {
+.pen-button:hover::before {
   animation-play-state: running;
   transition-duration: 0.75s;
   translate: 0% 0%;
@@ -282,7 +289,7 @@ box-shadow:  -31px 31px 63px #30638E,
   }
 }
 
-.codepen-button span {
+.pen-button span {
   position: relative;
   display: block;
   padding: 1rem 1.5rem;
