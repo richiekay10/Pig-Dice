@@ -83,6 +83,14 @@ const refresh = function () {
   setPlayer1.value = "";
   setPlayer2.value = "";
   winningValue.value = "";
+
+  //Toggling newGame, roll and hold buttons
+  newGameBtn.classList.add("hidden");
+  rollBtn.classList.add("hidden");
+  holdBtn.classList.add("hidden");
+
+  //Resetting the text array so it doesn't save the prevoius player names
+  text = [];
 }
 
 
@@ -161,9 +169,9 @@ const closeModal = function (event) {
   }
 }
 
-const refreshGame = function (e) {
-  let key = e.key;
-  if (key === "R" || key === "r") {
+const refreshGame = function (event) {
+  let key = event.key;
+  if (key === "R") {
     refresh();
   }
   
@@ -178,9 +186,17 @@ const startGameNow = function () {
   player1Text.innerHTML = text[0];
   player2Text.innerHTML = text[1];
   setPlayersContainer.classList.add("hide-input");
+  newGameBtn.classList.remove("hidden");
+  rollBtn.classList.remove("hidden");
+  holdBtn.classList.remove("hidden");
 }
 
+const startGameNowKey = function (e) {
+  let key = e.key;
+  if (key === "Enter") startGameNow(); 
+}
 
+startGame.addEventListener("keydown", startGameNowKey);
 startGame.addEventListener("click", startGameNow);
 overlay.addEventListener("click", closeXMark);
 document.addEventListener("keydown", refreshGame);

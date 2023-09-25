@@ -53,7 +53,7 @@
       <div class="middle-section">
         <p class="fp text-center">
           <!-- New Game BUTTON-->
-          <button class="new-game-button new-game-btn">
+          <button class="new-game-button new-game-btn hidden">
             <span>
                 NEW GAME
             </span>
@@ -63,7 +63,7 @@
           <img src="./images/dice-1.png" class="display-img dice-img hidden"/>
         </div>
         <p class="sp text-center">
-          <button class="play-button roll">
+          <button class="play-button roll hidden">
             🎲 ROLL DICE
             <div id="clip">
                 <div id="leftTop" class="corner"></div>
@@ -73,10 +73,10 @@
             </div>
             <span id="rightArrow" class="arrow"></span>
             <span id="leftArrow" class="arrow"></span>
-        </button>
+          </button>
         </p>
         <div class="text-left hold-div">
-          <button type="button" class="btn-hold cube cube-hover hold-btn mt-4">
+          <button type="button" class="btn-hold cube cube-hover hold-btn mt-4 hidden">
             <div class="bg-top">
             <div class="bg-inner"></div>
             </div>
@@ -101,7 +101,7 @@
         </p>
       </div>
       <hr />
-      <p>The objective of <em>Pig Dice Game</em> is to score 60 points or more to the winning points before the other opponents does.</p>
+      <p>The objective of <em>Pig Dice Game</em> is to score more or equal to the winning points before the other opponent does.</p>
       <h3>Game Rules:</h3>
       <p>Each turn a player gets to roll the dice. If a player happens to roll a 1 on any of their dice, they won't earn any points for that turn and the other player gets their turn. On getting 2-6 on the dice, the player's sum is being added to their current score, until the player decides to save this current score by clicking on the Hold button. If a player saves their current score, the other player gets their turn.</p>
       <p>Enjoy!</p>
@@ -126,12 +126,12 @@
   
   <!-- Setting Players and Winning Value DIV-->
   <div class="setting-players set-players pb-5">
-    <div>
-      <p>Please Set</p>
-      <input type="text" placeholder="Player 1 Name" minlength="3" maxlength="8" class="input1" required /><br /><br />
-      <input type="text" placeholder="Player 2 Name" minlength="3" maxlength="8" class="input2" required /><br /><br />
-      <input type="number" placeholder="Winning Value" class="winning-value" /><br /><br />
-      <button class="start-game">Start Game</button>
+    <div class="text-center">
+      <p style="color: #E0DFD5" class="font-italic font-weight-bold">Please Set</p>
+      <input type="text" placeholder="Player 1 Name" minlength="3" maxlength="8" class="input1 text-center" required /><br /><br />
+      <input type="text" placeholder="Player 2 Name" minlength="3" maxlength="8" class="input2 text-center" required /><br /><br />
+      <input type="number" placeholder="Winning Value" class="winning-value text-center" /><br /><br />
+      <button class="start-game btn btn-outline-primary rounded-pill">Start Game</button>
     </div>
   </div>
 
@@ -150,3 +150,5 @@
     ></script>
   </body>
 </html>
+
+

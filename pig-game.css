@@ -150,6 +150,11 @@ box-shadow:  -31px 31px 63px #30638E,
   transform: translate(-50%, -50%);
 }
 
+input {
+  padding: 1em .3em;
+  border-radius: 0.4em;
+  border: none;
+}
 
 
 
