@@ -24,11 +24,6 @@ const player2Text = document.querySelector(".player2-text"); //Player 2 text
 
 //Implementing the Player Winner Text
 const playerText = document.querySelectorAll(".player-text");
-//console.log(playerText);
-
-
-// let text1 = "";
-// let text2 = "";
 
 let text = [];
 
@@ -97,7 +92,6 @@ const refresh = function () {
 const rollDice = function () {
   if (playing) {
     let random = Math.trunc(Math.random() * 6) + 1;
-    //console.log(random);
     diceImg.classList.remove("hidden");
     diceImg.setAttribute(`src`, `./images/dice-${random}.png`);
 
@@ -117,25 +111,11 @@ const holdButton = function () {
     holdScore[activePlayer] += current;
     document.querySelector(`.hold-numb-${activePlayer}`).innerHTML = holdScore[activePlayer];
     if (holdScore[activePlayer] >= value) {
-      //console.log(value);
+      console.log(value);
       playing = false;
       document.querySelector(`.curr--${activePlayer}`).classList.add("winner");
       document.querySelector(`.curr--${activePlayer}`).classList.remove("side");
-      //Implementing the text of which player wins - The for loop worked in some cases
-      // for (let i = activePlayer; i <= holdScore.length - 1; i++) {
-      //   playerText[i].innerHTML = `PLAYER ${[activePlayer + 1]} WINS`;
-      // }
-
-      //`PLAYER ${activePlayer + 1} WINS`
-      //`PLAYER ${activePlayer + 1} WINS`
-      //The if statement works in all cases
-      // for (let i = activePlayer; i < holdScore.length - 1; i++) {
-      //   if (activePlayer) {
-      //     playerText[activePlayer].innerHTML = `${text[activePlayer + 1]} wins`;
-      //   } else {
-      //     playerText[activePlayer].innerHTML = `${text[activePlayer + 1]} wins`;
-      //   }
-      // }
+      
       if (activePlayer) {
         playerText[activePlayer].innerHTML = `${text[activePlayer]} wins`;
       } else {
@@ -178,10 +158,7 @@ const refreshGame = function (event) {
 }
 
 const startGameNow = function () {
-  // const playerValue1 = setPlayer1.value;
-  // const playerValue2 = setPlayer2.value;
   text.push(setPlayer1.value, setPlayer2.value);
-  //text2 += setPlayer2.value;
   value += Number(winningValue.value);
   player1Text.innerHTML = text[0];
   player2Text.innerHTML = text[1];
@@ -191,9 +168,11 @@ const startGameNow = function () {
   holdBtn.classList.remove("hidden");
 }
 
-const startGameNowKey = function (e) {
-  let key = e.key;
-  if (key === "Enter") startGameNow(); 
+const startGameNowKey = function (event) {
+  let key = event.key;
+  if (key === "Enter") {
+    startGameNow();
+  }  
 }
 
 startGame.addEventListener("keydown", startGameNowKey);
